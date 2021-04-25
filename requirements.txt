@@ -1,0 +1,12 @@
+hyperopt
+pandas
+numpy
+matplotlib
+seaborn
+statsmodels
+scipy
+fracdiff
+PyQt5
+qasync
+sklearn
+lightgbm

@@ -2,11 +2,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from plotly.subplots import make_subplots
-import plotly.graph_objects as go
-import plotly.io as pio
-import plotly
-import plotly.express as px
 import pandas as pd
 import statsmodels.api as sm
 from statsmodels.tsa.api import VAR

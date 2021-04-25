@@ -7,8 +7,6 @@ import os
 import warnings
 warnings.simplefilter('ignore')
 
-#filename='data/dataset.csv'
-
 def create_arg_parser():
     parser = argparse.ArgumentParser(description='####')
     parser.add_argument('inputFile',

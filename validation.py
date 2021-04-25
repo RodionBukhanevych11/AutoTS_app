@@ -6,7 +6,6 @@ import lightgbm
 from sklearn.model_selection import TimeSeriesSplit
 from sklearn.model_selection import cross_val_score
 from hyperopt import hp, fmin, tpe, Trials, STATUS_OK
-from functools import partial
 import numpy as np
 
 warnings.simplefilter('ignore')
