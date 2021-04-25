@@ -8,3 +8,5 @@ hyper_space_lgbm = {
     'reg_lambda':       hp.uniform('reg_lambda',0,1),
     'n_estimators':     hp.quniform('n_estimators', 100, 250, q=1)
 }
+
+trials_num = 10

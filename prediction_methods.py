@@ -15,6 +15,7 @@ import numpy as np
 from validation import evaluate_metric,get_best_params,cross_val_prediction
 from config import hyper_space_lgbm
 from validation import series_to_supervised, train_valid_split
+from config import trials_num
 warnings.simplefilter('ignore')
 
 def varma_prediction(train,test,steps):
@@ -55,7 +56,7 @@ def boosting_validation(df,train_columns,valid_size,inverting_times):
         test_y = test[column]
         test_x = test.drop(t1_columns,axis = 1)
         lgbm_model = LGBMRegressor()
-        lgbm_best_params = get_best_params(train_x,train_y,4,lgbm_model,hyper_space_lgbm)
+        lgbm_best_params = get_best_params(train_x,train_y,trials_num,lgbm_model,hyper_space_lgbm)
         lgbm_predicts = cross_val_prediction(lgbm_model,lgbm_best_params,train_x,train_y,test_x)
         column = column[:-5]
         prediction_df[column] = lgbm_predicts

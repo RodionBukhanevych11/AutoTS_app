@@ -1,17 +1,32 @@
 import sys
-import pandas as pd
-import numpy as np
-from functools import reduce
 from PyQt5.QtWidgets import QApplication
-import time
 from windows import MainWindow
+import argparse
+import sys
+import os
 import warnings
 warnings.simplefilter('ignore')
 
-filename='data/dataset.csv'
+#filename='data/dataset.csv'
+
+def create_arg_parser():
+    parser = argparse.ArgumentParser(description='####')
+    parser.add_argument('inputFile',
+                    help='Path to the input file with time series')
+    return parser
+
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    window = MainWindow(filename)
-    window.show()
-    sys.exit(app.exec_())
+    try:
+        arg_parser = create_arg_parser()
+        parsed_args = arg_parser.parse_args(sys.argv[1:])
+        if os.path.exists(parsed_args.inputFile):
+            filename = parsed_args.inputFile
+        else:
+            print("Файл несуществует")
+        app = QApplication(sys.argv)
+        window = MainWindow(filename)
+        window.show()
+        sys.exit(app.exec_())
+    except:
+        print("Правильный ввод: <py main.py dataset.csv>")

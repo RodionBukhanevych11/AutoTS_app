@@ -166,7 +166,7 @@ class Prediction_graphs(QWidget):
             if self.predict_df[self.methodwidget_item] is not None and self.val_df[self.methodwidget_item] is not None:
                 self.ax1.clear()
                 self.ax2.clear()
-                plot_pred_graphs(self.df[self.widget_item],self.predict_df[self.methodwidget_item][self.widget_item],self.val_df[self.methodwidget_item][self.widget_item],title = self.widget_item,fig = self.fig, ax1 = self.ax1,ax2=self.ax2)
+                plot_pred_graphs(self.df[self.widget_item],self.predict_df[self.methodwidget_item][self.widget_item],self.val_df[self.methodwidget_item][self.widget_item],self.methodwidget_item,title = self.widget_item,fig = self.fig, ax1 = self.ax1,ax2=self.ax2)
                 self.canvas.draw()
             else:
                 self.warning_box("Сначала сделайте предсказания!")
@@ -457,15 +457,15 @@ class Window_predictions(QWidget):
     def save_valid(self):
         for key in self.val_predicts_df.keys():
             if self.val_predicts_df[key] is not None:
-                self.val_predicts_df[key].to_csv(f'val_{key}_predicts.csv',index=False)
+                self.val_predicts_df[key].to_csv(f'output/val_{key}_predicts.csv',index=False)
         for key in self.val_metrics_df.keys():
             if self.val_metrics_df[key] is not None:
-                self.val_metrics_df[key].to_csv(f'{key}_metrics.csv',index=False)        
+                self.val_metrics_df[key].to_csv(f'output/{key}_metrics.csv',index=False)        
 
     def save_prediction(self):
         for key in self.predicts_df.keys():
             if self.predicts_df[key] is not None:
-                self.predicts_df[key].to_csv(f'{key}_predicts.csv',index=False)
+                self.predicts_df[key].to_csv(f'output/{key}_predicts.csv',index=False)
 
     def plot_valid(self):
         pass

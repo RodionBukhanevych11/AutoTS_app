@@ -33,7 +33,7 @@ def read_df(filename):
             print("You can pass only csv or xlsx")
         df = df.dropna(axis='columns', how ='all')
         df = df.dropna(axis = 0, how = 'all')
-        df = df.head(100)
+        df = df.head(1000)
         df = df.iloc[:,9:]
         return df
     except:
@@ -91,13 +91,14 @@ def plot_correlogram(x, fig, axes,lags=40, title=None):
     fig.tight_layout()
     fig.subplots_adjust(top=.9)
     
-def plot_pred_graphs(ts,predict_ts,val_ts,title,fig, ax1, ax2 ):
-    #predict_ts = predict_ts.reset_index()
-    #val_ts = val_ts.reset_index()
-    print("TS",ts)
-    print("predict_ts",predict_ts)
-    print("val_ts",val_ts)
-
+def plot_pred_graphs(ts,predict_ts,val_ts,widget_method,title,fig, ax1, ax2):
+    if widget_method == "BoDT" or widget_method == "LSTM":
+        ts_copy = ts[:-len(val_ts)]
+        ts_copy = ts_copy.append(val_ts,ignore_index=True)
+        val_ts = ts_copy.tail(len(val_ts))
+        ts_copy = ts.append(predict_ts,ignore_index=True)
+        predict_ts = ts_copy.tail(len(predict_ts))
+        del ts_copy
     ax1.plot(ts,'blue',label='Actual')
     ax1.plot(val_ts,'green',label='Validation')
     ax2.plot(ts,'blue',label='Actual')
