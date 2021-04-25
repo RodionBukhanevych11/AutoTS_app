@@ -15,7 +15,7 @@ Multifunctional app to work with multivariate timeseries. Build on PyQT5.
 ![Forecasting window & metrics](https://github.com/RodionBukhanevych11/AutoTS_app/tree/main/images/Screenshot_2.png)
 ![Plots of forecasting](https://github.com/RodionBukhanevych11/AutoTS_app/tree/main/images/Screenshot_3.png)
 #### Run app
-py main.py <filepath>
+py main.py filepath
 
 !!! Dataset  should not contain any columns except pure time series
 DateTime features extracting would be added in future!
